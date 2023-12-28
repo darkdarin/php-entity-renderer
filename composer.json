@@ -1,0 +1,41 @@
+{
+    "name": "darkdarin/php-entity-renderer",
+    "description": "Renderer helpers to make PHP code for classes, intefaces, traits and enums",
+    "license": "BSD-3-Clause",
+    "type": "package",
+    "authors": [
+        {
+            "name": "Babushkin Pavel",
+            "email": "idarksoft@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "DarkDarin\\PhpEntityRenderer\\": "src/"
+        }
+    },
+    "require": {
+        "php": "8.2.*|8.3.*"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.1",
+        "illuminate/support": "^10.0",
+        "hyperf/di": "~3.0.0",
+        "roave/security-advisories": "dev-latest"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "DarkDarin\\VkOrdSdk\\VkOrdSdkServiceProvider"
+            ]
+        },
+        "hyperf": {
+            "config": "DarkDarin\\VkOrdSdk\\ConfigProvider"
+        }
+    },
+    "config": {
+        "allow-plugins": {
+            "php-http/discovery": false
+        }
+    }
+}
