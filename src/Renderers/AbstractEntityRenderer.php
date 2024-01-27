@@ -52,7 +52,6 @@ abstract class AbstractEntityRenderer implements EntityRendererInterface
             $namespace = 'namespace ' . $namespace . ';' . PHP_EOL . PHP_EOL;
         }
 
-        $uses = $this->renderUses($entityAliases, $this->className);
         if (method_exists($this, 'renderDynamicProperties')) {
             $this->renderDynamicProperties($entityAliases, $this->docBlock);
         }
@@ -60,6 +59,8 @@ abstract class AbstractEntityRenderer implements EntityRendererInterface
         $attributes = $this->renderAttributes($entityAliases);
         $header = $this->renderHeader($entityAliases);
         $body = IndentsHelper::indent($this->renderBody($entityAliases));
+
+        $uses = $this->renderUses($entityAliases, $this->className);
 
         return <<<PHP
 <?php

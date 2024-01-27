@@ -49,10 +49,11 @@ class EnumRenderer extends AbstractEntityRenderer
         $result = [];
 
         $result[] = 'enum';
-        $result[] = $this->getBaseClassName();
 
         if ($this->type !== null) {
-            $result[] = ': ' . $this->type->value;
+            $result[] = $this->getBaseClassName() . ': ' . $this->type->value;
+        } else {
+            $result[] = $this->getBaseClassName();
         }
 
         if (!empty($this->implements)) {

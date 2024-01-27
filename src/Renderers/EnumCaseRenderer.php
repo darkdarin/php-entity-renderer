@@ -13,7 +13,7 @@ class EnumCaseRenderer implements EntityRendererInterface
 
     public function __construct(
         private readonly string $name,
-        private readonly string $value,
+        private readonly ValueRenderer $value,
     ) {
         $this->docBlock = new DocBlockRenderer();
     }
@@ -29,6 +29,6 @@ class EnumCaseRenderer implements EntityRendererInterface
     public function render(EntityAliases $entityAliases): string
     {
         $docBlock = $this->docBlock->render($entityAliases);
-        return $docBlock . 'case ' . $this->name . ' = ' . $this->value . ';';
+        return $docBlock . 'case ' . $this->name . ' = ' . $this->value->render($entityAliases) . ';';
     }
 }

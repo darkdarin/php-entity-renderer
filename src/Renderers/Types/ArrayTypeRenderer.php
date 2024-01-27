@@ -33,4 +33,18 @@ readonly class ArrayTypeRenderer implements TypeRendererInterface
     {
         return 'array';
     }
+
+    public function setNullable(bool $nullable = true): TypeRendererInterface
+    {
+        if ($nullable) {
+            return new NullableTypeRenderer($this);
+        }
+
+        return $this;
+    }
+
+    public function isNullable(): bool
+    {
+        return false;
+    }
 }

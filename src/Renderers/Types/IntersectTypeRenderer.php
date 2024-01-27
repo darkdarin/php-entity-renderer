@@ -7,10 +7,10 @@ use DarkDarin\PhpEntityRenderer\EntityAliases;
 
 readonly class IntersectTypeRenderer implements TypeRendererInterface
 {
-    /** @var list<TypeRendererInterface> */
+    /** @var list<ClassTypeRenderer> */
     public array $types;
 
-    public function __construct(TypeRendererInterface ...$types)
+    public function __construct(ClassTypeRenderer | (UnionTypeRenderer & TypeRendererInterface) ...$types)
     {
         $this->types = $types;
     }
@@ -29,5 +29,15 @@ readonly class IntersectTypeRenderer implements TypeRendererInterface
                 $this->types
             )
         );
+    }
+
+    public function setNullable(bool $nullable = true): TypeRendererInterface
+    {
+        return $this;
+    }
+
+    public function isNullable(): bool
+    {
+        return false;
     }
 }

@@ -30,4 +30,21 @@ enum BuiltinTypeRenderer: string implements TypeRendererInterface
     {
         return $this->value;
     }
+
+    public function setNullable(bool $nullable = true): TypeRendererInterface
+    {
+        if (!$nullable) {
+            return $this;
+        }
+
+        return match ($this) {
+            self::Never, self::Void, self::Null, self::Mixed => $this,
+            default => new NullableTypeRenderer($this),
+        };
+    }
+
+    public function isNullable(): bool
+    {
+        return $this === self::Null || $this === self::Mixed;
+    }
 }

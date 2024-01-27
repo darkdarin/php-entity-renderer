@@ -14,7 +14,7 @@ class ConstantRenderer implements EntityRendererInterface
 
     public function __construct(
         private readonly string $name,
-        private readonly string $value,
+        private readonly ValueRenderer $value,
     ) {
         $this->docBlock = new DocBlockRenderer();
     }
@@ -26,7 +26,7 @@ class ConstantRenderer implements EntityRendererInterface
             $modifiers .= ' ';
         }
 
-        $result = $modifiers . 'const ' . $this->name . ' = ' . $this->value . ';';
+        $result = $modifiers . 'const ' . $this->name . ' = ' . $this->value->render($entityAliases) . ';';
         $docBlock = $this->docBlock->render($entityAliases);
 
         return $docBlock . $result;

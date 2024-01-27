@@ -23,7 +23,7 @@ class MethodRenderer implements EntityRendererInterface
 
     /** @var list<ParameterRenderer> */
     private array $parameters = [];
-    private TypeRendererInterface $returnType = BuiltinTypeRenderer::Mixed;
+    private ?TypeRendererInterface $returnType = null;
     private ?string $methodBody = null;
 
     public function __construct(
@@ -95,7 +95,9 @@ class MethodRenderer implements EntityRendererInterface
             $this->docBlock->addLine($line);
         }
 
-        $this->docBlock->addLine('@return ' . $this->returnType->renderDocBlock($entityAliases));
+        if ($this->returnType !== null) {
+            $this->docBlock->addLine('@return ' . $this->returnType->renderDocBlock($entityAliases));
+        }
 
         return $this->docBlock->render($entityAliases);
     }
@@ -111,11 +113,11 @@ class MethodRenderer implements EntityRendererInterface
         $result[] = 'function';
         $result[] = $this->name;
 
-        $signature = $this->renderSignatureInline($entityAliases, $methodBody, $withoutBody);
+        $signature = $this->renderSignatureInline($entityAliases);
         $method = $withoutBody ? ';' : PHP_EOL . '{' . $methodBody . '}';
 
         if (strlen($signature) > 80) {
-            $signature = $this->renderSignatureColumn($entityAliases, $methodBody, $withoutBody);
+            $signature = $this->renderSignatureColumn($entityAliases);
             $method = $withoutBody ? ';' : ' {' . $methodBody . '}';
         }
 
@@ -130,8 +132,9 @@ class MethodRenderer implements EntityRendererInterface
         }
 
         $signature = implode(', ', $parameters);
-        $returnType = $this->returnType->render($entityAliases);
-        return '(' . $signature . '): ' . $returnType;
+        $returnType = $this->returnType !== null ? ': ' . $this->returnType->render($entityAliases) : '';
+
+        return '(' . $signature . ')' . $returnType;
     }
 
     protected function renderSignatureColumn(EntityAliases $entityAliases): string
@@ -142,8 +145,9 @@ class MethodRenderer implements EntityRendererInterface
         }
 
         $signature = IndentsHelper::indent(implode(',' . PHP_EOL, $parameters));
-        $returnType = $this->returnType->render($entityAliases);
-        return '(' . PHP_EOL . $signature . PHP_EOL . '): ' . $returnType;
+        $returnType = $this->returnType !== null ? ': ' . $this->returnType->render($entityAliases) : '';
+
+        return '(' . PHP_EOL . $signature . PHP_EOL . ')' . $returnType;
     }
 
     protected function renderBody(): string

@@ -21,7 +21,7 @@ class PropertyRenderer implements EntityRendererInterface, DocBlockRendererInter
     use HasModifierVisibility;
 
     private ?string $description = null;
-    private ?string $default = null;
+    private ?ValueRenderer $default = null;
 
     public function __construct(
         private readonly string $name,
@@ -51,12 +51,12 @@ class PropertyRenderer implements EntityRendererInterface, DocBlockRendererInter
         return $this->description;
     }
 
-    public function setDefault(string $default): void
+    public function setDefault(ValueRenderer $default): void
     {
         $this->default = $default;
     }
 
-    public function getDefault(): ?string
+    public function getDefault(): ?ValueRenderer
     {
         return $this->default;
     }
@@ -86,6 +86,11 @@ class PropertyRenderer implements EntityRendererInterface, DocBlockRendererInter
 
         $result[] = $this->type->render($entityAliases);
         $result[] = '$' . $this->name;
+
+        if ($this->default !== null) {
+            $result [] = '=';
+            $result [] = $this->default->render($entityAliases);
+        }
 
         return $docBlock . implode(' ', $result) . ';';
     }

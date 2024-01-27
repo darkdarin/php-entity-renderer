@@ -1,2 +1,2 @@
 # php-entity-renderer
-Renderer helpers to make PHP code for classes, intefaces, traits and enums 
+Renderer helpers to make PHP code for classes, interfaces, traits and enums 

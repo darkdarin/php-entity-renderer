@@ -17,7 +17,7 @@ class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInte
     use HasModifierVisibility;
 
     private ?string $description = null;
-    private ?string $default = null;
+    private ?ValueRenderer $default = null;
 
     public function __construct(
         private readonly string $name,
@@ -45,12 +45,12 @@ class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInte
         return $this->description;
     }
 
-    public function setDefault(string $default): void
+    public function setDefault(ValueRenderer $default): void
     {
         $this->default = $default;
     }
 
-    public function getDefault(): ?string
+    public function getDefault(): ?ValueRenderer
     {
         return $this->default;
     }
@@ -67,9 +67,25 @@ class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInte
 
     public function render(EntityAliases $entityAliases, bool $inline = false): string
     {
-        $result = $this->type->render($entityAliases) . ' $' . $this->name;
+        $attributes = $this->renderAttributes($entityAliases, $inline);
+
+        $modifiers = $this->renderModifiers();
+        if (!empty($modifiers)) {
+            $result[] = $modifiers;
+        }
+
+        $result[] = $this->type->render($entityAliases);
+        $result[] = '$' . $this->name;
+
         if ($this->default !== null) {
-            $result .= ' = ' . $this->default;
+            $result[] = '=';
+            $result[] = $this->default->render($entityAliases);
+        }
+
+        $result = implode(' ', $result);
+
+        if (!empty($attributes)) {
+            return $inline ? $attributes . ' ' . $result : $attributes . PHP_EOL . $result;
         }
 
         return $result;
