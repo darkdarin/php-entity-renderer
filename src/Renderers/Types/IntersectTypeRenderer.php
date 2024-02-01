@@ -5,14 +5,17 @@ namespace DarkDarin\PhpEntityRenderer\Renderers\Types;
 use DarkDarin\PhpEntityRenderer\Contracts\TypeRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 
+/**
+ * @psalm-api
+ */
 readonly class IntersectTypeRenderer implements TypeRendererInterface
 {
-    /** @var list<ClassTypeRenderer> */
+    /** @var list<ClassTypeRenderer | (UnionTypeRenderer & TypeRendererInterface)> */
     public array $types;
 
     public function __construct(ClassTypeRenderer | (UnionTypeRenderer & TypeRendererInterface) ...$types)
     {
-        $this->types = $types;
+        $this->types = array_values($types);
     }
 
     public function renderDocBlock(EntityAliases $entityAliases): string

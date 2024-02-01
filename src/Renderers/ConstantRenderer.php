@@ -3,11 +3,16 @@
 namespace DarkDarin\PhpEntityRenderer\Renderers;
 
 use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasDocBlockInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasModifierVisibilityInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Helpers\HasDocBlock;
 use DarkDarin\PhpEntityRenderer\Helpers\HasModifierVisibility;
 
-class ConstantRenderer implements EntityRendererInterface
+/**
+ * @psalm-api
+ */
+class ConstantRenderer implements EntityRendererInterface, HasDocBlockInterface, HasModifierVisibilityInterface
 {
     use HasDocBlock;
     use HasModifierVisibility;

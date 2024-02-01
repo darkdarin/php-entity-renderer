@@ -6,14 +6,18 @@ use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Helpers\IndentsHelper;
 
-class AttributeRenderer implements EntityRendererInterface
+/**
+ * @psalm-api
+ */
+readonly class AttributeRenderer implements EntityRendererInterface
 {
     /**
+     * @param class-string $className
      * @param list<ValueRenderer>|array<string, ValueRenderer> $arguments
      */
     public function __construct(
-        private readonly string $className,
-        private readonly array $arguments = [],
+        private string $className,
+        private array $arguments = [],
     ) {}
 
     public function getName(): string

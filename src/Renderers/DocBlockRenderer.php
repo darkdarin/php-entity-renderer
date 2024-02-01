@@ -6,6 +6,9 @@ use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Helpers\IndentsHelper;
 
+/**
+ * @psalm-api
+ */
 class DocBlockRenderer implements EntityRendererInterface
 {
     /** @var list<string> */

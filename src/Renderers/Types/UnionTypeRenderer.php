@@ -5,6 +5,9 @@ namespace DarkDarin\PhpEntityRenderer\Renderers\Types;
 use DarkDarin\PhpEntityRenderer\Contracts\TypeRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 
+/**
+ * @psalm-api
+ */
 readonly class UnionTypeRenderer implements TypeRendererInterface
 {
     /** @var list<TypeRendererInterface> */
@@ -13,7 +16,7 @@ readonly class UnionTypeRenderer implements TypeRendererInterface
     public function __construct(TypeRendererInterface ...$types)
     {
         $nullable = $this->hasNullableTypes($types);
-        $this->types = $this->getTypesWithNullable($types, $nullable);
+        $this->types = $this->getTypesWithNullable(array_values($types), $nullable);
     }
 
     public function renderDocBlock(EntityAliases $entityAliases): string

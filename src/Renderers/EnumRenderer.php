@@ -2,6 +2,10 @@
 
 namespace DarkDarin\PhpEntityRenderer\Renderers;
 
+use DarkDarin\PhpEntityRenderer\Contracts\HasConstantsInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasImplementsInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasMethodsInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasTraitsInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Enums\EnumTypeEnum;
 use DarkDarin\PhpEntityRenderer\Helpers\HasConstants;
@@ -9,7 +13,11 @@ use DarkDarin\PhpEntityRenderer\Helpers\HasImplements;
 use DarkDarin\PhpEntityRenderer\Helpers\HasMethods;
 use DarkDarin\PhpEntityRenderer\Helpers\HasTraits;
 
-class EnumRenderer extends AbstractEntityRenderer
+/**
+ * @psalm-api
+ */
+class EnumRenderer extends AbstractEntityRenderer implements HasConstantsInterface, HasImplementsInterface,
+                                                             HasMethodsInterface, HasTraitsInterface
 {
     use HasConstants;
     use HasImplements;
@@ -77,7 +85,7 @@ class EnumRenderer extends AbstractEntityRenderer
     protected function renderCases(EntityAliases $entityAliases): string
     {
         $cases = array_map(
-            fn(EnumCaseRenderer $case) => $case->render($entityAliases),
+            fn (EnumCaseRenderer $case) => $case->render($entityAliases),
             $this->cases
         );
 

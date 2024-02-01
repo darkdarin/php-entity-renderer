@@ -14,6 +14,11 @@ trait HasTraits
         return $this->traits;
     }
 
+    /**
+     * @param EntityAliases $entityAliases
+     * @param class-string ...$classNames
+     * @return $this
+     */
     public function addTraits(EntityAliases $entityAliases, string ...$classNames): self
     {
         foreach ($classNames as $className) {

@@ -4,6 +4,8 @@ namespace DarkDarin\PhpEntityRenderer\Renderers;
 
 use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\EntityWithDescriptionInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasAttributesInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasDocBlockInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Helpers\ClassNameHelper;
 use DarkDarin\PhpEntityRenderer\Helpers\HasAttributes;
@@ -11,7 +13,10 @@ use DarkDarin\PhpEntityRenderer\Helpers\HasDocBlock;
 use DarkDarin\PhpEntityRenderer\Helpers\HasNamespaces;
 use DarkDarin\PhpEntityRenderer\Helpers\IndentsHelper;
 
-abstract class AbstractEntityRenderer implements EntityRendererInterface, EntityWithDescriptionInterface
+/**
+ * @psalm-api
+ */
+abstract class AbstractEntityRenderer implements EntityRendererInterface, EntityWithDescriptionInterface, HasAttributesInterface, HasDocBlockInterface
 {
     use HasAttributes;
     use HasDocBlock;

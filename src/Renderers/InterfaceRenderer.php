@@ -2,12 +2,18 @@
 
 namespace DarkDarin\PhpEntityRenderer\Renderers;
 
+use DarkDarin\PhpEntityRenderer\Contracts\HasConstantsInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasExtendsInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasMethodsInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Helpers\HasConstants;
 use DarkDarin\PhpEntityRenderer\Helpers\HasExtends;
 use DarkDarin\PhpEntityRenderer\Helpers\HasMethods;
 
-class InterfaceRenderer extends AbstractEntityRenderer
+/**
+ * @psalm-api
+ */
+class InterfaceRenderer extends AbstractEntityRenderer implements HasConstantsInterface, HasExtendsInterface, HasMethodsInterface
 {
     use HasConstants;
     use HasExtends;

@@ -5,6 +5,10 @@ namespace DarkDarin\PhpEntityRenderer\Renderers;
 use DarkDarin\PhpEntityRenderer\Contracts\DocBlockRendererInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\EntityWithDescriptionInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasAttributesInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasDocBlockInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasModifierReadonlyInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasModifierVisibilityInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\TypeRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Enums\VisibilityModifierEnum;
@@ -14,7 +18,12 @@ use DarkDarin\PhpEntityRenderer\Helpers\HasModifierReadonly;
 use DarkDarin\PhpEntityRenderer\Helpers\HasModifierVisibility;
 use DarkDarin\PhpEntityRenderer\Renderers\Types\ArrayTypeRenderer;
 
-class PropertyRenderer implements EntityRendererInterface, DocBlockRendererInterface, EntityWithDescriptionInterface
+/**
+ * @psalm-api
+ */
+class PropertyRenderer implements EntityRendererInterface, DocBlockRendererInterface, EntityWithDescriptionInterface,
+                                  HasAttributesInterface, HasDocBlockInterface, HasModifierReadonlyInterface,
+                                  HasModifierVisibilityInterface
 {
     use HasAttributes;
     use HasDocBlock;

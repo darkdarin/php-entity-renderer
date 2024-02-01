@@ -5,13 +5,20 @@ namespace DarkDarin\PhpEntityRenderer\Renderers;
 use DarkDarin\PhpEntityRenderer\Contracts\DocBlockRendererInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\EntityWithDescriptionInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasAttributesInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasModifierReadonlyInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasModifierVisibilityInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\TypeRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Helpers\HasAttributes;
 use DarkDarin\PhpEntityRenderer\Helpers\HasModifierReadonly;
 use DarkDarin\PhpEntityRenderer\Helpers\HasModifierVisibility;
 
-class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInterface, EntityWithDescriptionInterface
+/**
+ * @psalm-api
+ */
+class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInterface, EntityWithDescriptionInterface,
+                                   HasAttributesInterface, HasModifierReadonlyInterface, HasModifierVisibilityInterface
 {
     use HasAttributes;
     use HasModifierReadonly;
@@ -23,7 +30,8 @@ class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInte
     public function __construct(
         private readonly string $name,
         private readonly TypeRendererInterface $type,
-    ) {}
+    ) {
+    }
 
     public function getName(): string
     {
@@ -71,6 +79,7 @@ class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInte
     {
         $attributes = $this->renderAttributes($entityAliases, $inline);
 
+        $result = [];
         $modifiers = $this->renderModifiers();
         if (!empty($modifiers)) {
             $result[] = $modifiers;

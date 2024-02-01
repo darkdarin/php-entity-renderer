@@ -5,6 +5,9 @@ namespace DarkDarin\PhpEntityRenderer\Renderers;
 use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 
+/**
+ * @psalm-api
+ */
 class ValueRenderer implements EntityRendererInterface
 {
     public function __construct(

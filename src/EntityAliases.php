@@ -6,9 +6,13 @@ use DarkDarin\PhpEntityRenderer\Helpers\ClassNameHelper;
 
 class EntityAliases
 {
-    /** @var array<string, class-string|null> */
+    /** @var array<string, class-string> */
     private array $aliases = [];
 
+    /**
+     * @param class-string $type
+     * @return string
+     */
     public function addAlias(string $type): string
     {
         if ($this->isBuiltin($type)) {
@@ -27,6 +31,9 @@ class EntityAliases
         return $typeAlias;
     }
 
+    /**
+     * @return array<string, class-string>
+     */
     public function getAliases(): array
     {
         return $this->aliases;

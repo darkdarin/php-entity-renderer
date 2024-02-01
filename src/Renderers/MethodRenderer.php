@@ -4,6 +4,11 @@ namespace DarkDarin\PhpEntityRenderer\Renderers;
 
 use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\EntityWithDescriptionInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasAttributesInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasDocBlockInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasModifierInheritanceInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasModifierStaticInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\HasModifierVisibilityInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\TypeRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Helpers\HasAttributes;
@@ -13,7 +18,12 @@ use DarkDarin\PhpEntityRenderer\Helpers\HasModifierStatic;
 use DarkDarin\PhpEntityRenderer\Helpers\HasModifierVisibility;
 use DarkDarin\PhpEntityRenderer\Helpers\IndentsHelper;
 
-class MethodRenderer implements EntityRendererInterface, EntityWithDescriptionInterface
+/**
+ * @psalm-api
+ */
+class MethodRenderer implements EntityRendererInterface, EntityWithDescriptionInterface, HasAttributesInterface,
+                                HasDocBlockInterface, HasModifierInheritanceInterface, HasModifierStaticInterface,
+                                HasModifierVisibilityInterface
 {
     use HasAttributes;
     use HasDocBlock;

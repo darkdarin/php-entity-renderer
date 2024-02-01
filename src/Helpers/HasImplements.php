@@ -14,6 +14,11 @@ trait HasImplements
         return $this->implements;
     }
 
+    /**
+     * @param EntityAliases $entityAliases
+     * @param class-string ...$classNames
+     * @return $this
+     */
     public function addImplements(EntityAliases $entityAliases, string ...$classNames): self
     {
         foreach ($classNames as $className) {

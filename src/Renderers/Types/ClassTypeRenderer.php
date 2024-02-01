@@ -5,8 +5,14 @@ namespace DarkDarin\PhpEntityRenderer\Renderers\Types;
 use DarkDarin\PhpEntityRenderer\Contracts\TypeRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 
+/**
+ * @psalm-api
+ */
 readonly class ClassTypeRenderer implements TypeRendererInterface
 {
+    /**
+     * @param class-string $className
+     */
     public function __construct(
         public string $className
     ) {}

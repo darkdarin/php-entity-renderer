@@ -5,6 +5,9 @@ namespace DarkDarin\PhpEntityRenderer\Renderers\Types;
 use DarkDarin\PhpEntityRenderer\Contracts\TypeRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 
+/**
+ * @psalm-api
+ */
 readonly class NullableTypeRenderer implements TypeRendererInterface
 {
     public function __construct(
