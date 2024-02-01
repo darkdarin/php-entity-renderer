@@ -16,8 +16,11 @@ use DarkDarin\PhpEntityRenderer\Helpers\HasTraits;
 /**
  * @psalm-api
  */
-class EnumRenderer extends AbstractEntityRenderer implements HasConstantsInterface, HasImplementsInterface,
-                                                             HasMethodsInterface, HasTraitsInterface
+class EnumRenderer extends AbstractEntityRenderer implements
+    HasConstantsInterface,
+    HasImplementsInterface,
+    HasMethodsInterface,
+    HasTraitsInterface
 {
     use HasConstants;
     use HasImplements;
@@ -85,7 +88,7 @@ class EnumRenderer extends AbstractEntityRenderer implements HasConstantsInterfa
     protected function renderCases(EntityAliases $entityAliases): string
     {
         $cases = array_map(
-            fn (EnumCaseRenderer $case) => $case->render($entityAliases),
+            fn(EnumCaseRenderer $case) => $case->render($entityAliases),
             $this->cases
         );
 

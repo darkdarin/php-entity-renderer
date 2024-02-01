@@ -17,8 +17,13 @@ use DarkDarin\PhpEntityRenderer\Helpers\HasModifierVisibility;
 /**
  * @psalm-api
  */
-class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInterface, EntityWithDescriptionInterface,
-                                   HasAttributesInterface, HasModifierReadonlyInterface, HasModifierVisibilityInterface
+class ParameterRenderer implements
+    EntityRendererInterface,
+    DocBlockRendererInterface,
+    EntityWithDescriptionInterface,
+    HasAttributesInterface,
+    HasModifierReadonlyInterface,
+    HasModifierVisibilityInterface
 {
     use HasAttributes;
     use HasModifierReadonly;
@@ -30,8 +35,7 @@ class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInte
     public function __construct(
         private readonly string $name,
         private readonly TypeRendererInterface $type,
-    ) {
-    }
+    ) {}
 
     public function getName(): string
     {

@@ -21,9 +21,14 @@ use DarkDarin\PhpEntityRenderer\Renderers\Types\ArrayTypeRenderer;
 /**
  * @psalm-api
  */
-class PropertyRenderer implements EntityRendererInterface, DocBlockRendererInterface, EntityWithDescriptionInterface,
-                                  HasAttributesInterface, HasDocBlockInterface, HasModifierReadonlyInterface,
-                                  HasModifierVisibilityInterface
+class PropertyRenderer implements
+    EntityRendererInterface,
+    DocBlockRendererInterface,
+    EntityWithDescriptionInterface,
+    HasAttributesInterface,
+    HasDocBlockInterface,
+    HasModifierReadonlyInterface,
+    HasModifierVisibilityInterface
 {
     use HasAttributes;
     use HasDocBlock;

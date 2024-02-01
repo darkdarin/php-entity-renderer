@@ -21,9 +21,14 @@ use DarkDarin\PhpEntityRenderer\Helpers\IndentsHelper;
 /**
  * @psalm-api
  */
-class MethodRenderer implements EntityRendererInterface, EntityWithDescriptionInterface, HasAttributesInterface,
-                                HasDocBlockInterface, HasModifierInheritanceInterface, HasModifierStaticInterface,
-                                HasModifierVisibilityInterface
+class MethodRenderer implements
+    EntityRendererInterface,
+    EntityWithDescriptionInterface,
+    HasAttributesInterface,
+    HasDocBlockInterface,
+    HasModifierInheritanceInterface,
+    HasModifierStaticInterface,
+    HasModifierVisibilityInterface
 {
     use HasAttributes;
     use HasDocBlock;

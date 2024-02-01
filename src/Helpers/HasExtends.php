@@ -3,8 +3,6 @@
 namespace DarkDarin\PhpEntityRenderer\Helpers;
 
 use DarkDarin\PhpEntityRenderer\EntityAliases;
-use DarkDarin\PhpEntityRenderer\Renderers\ClassRenderer;
-use DarkDarin\PhpEntityRenderer\Renderers\InterfaceRenderer;
 
 trait HasExtends
 {

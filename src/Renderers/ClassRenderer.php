@@ -23,11 +23,15 @@ use DarkDarin\PhpEntityRenderer\Helpers\HasTraits;
 /**
  * @psalm-api
  */
-class ClassRenderer extends AbstractEntityRenderer implements HasConstantsInterface, HasExtendsInterface,
-                                                              HasImplementsInterface, HasMethodsInterface,
-                                                              HasModifierInheritanceInterface,
-                                                              HasModifierReadonlyInterface, HasPropertiesInterface,
-                                                              HasTraitsInterface
+class ClassRenderer extends AbstractEntityRenderer implements
+    HasConstantsInterface,
+    HasExtendsInterface,
+    HasImplementsInterface,
+    HasMethodsInterface,
+    HasModifierInheritanceInterface,
+    HasModifierReadonlyInterface,
+    HasPropertiesInterface,
+    HasTraitsInterface
 {
     use HasConstants;
     use HasExtends;
