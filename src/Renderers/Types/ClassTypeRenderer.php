@@ -9,8 +9,7 @@ readonly class ClassTypeRenderer implements TypeRendererInterface
 {
     public function __construct(
         public string $className
-    ) {
-    }
+    ) {}
 
     public function renderDocBlock(EntityAliases $entityAliases): string
     {

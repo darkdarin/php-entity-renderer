@@ -14,8 +14,7 @@ class AttributeRenderer implements EntityRendererInterface
     public function __construct(
         private readonly string $className,
         private readonly array $arguments = [],
-    ) {
-    }
+    ) {}
 
     public function getName(): string
     {

@@ -9,8 +9,7 @@ readonly class NullableTypeRenderer implements TypeRendererInterface
 {
     public function __construct(
         public TypeRendererInterface $type
-    ) {
-    }
+    ) {}
 
     public function renderDocBlock(EntityAliases $entityAliases): string
     {

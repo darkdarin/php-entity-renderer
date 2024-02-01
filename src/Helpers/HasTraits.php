@@ -26,7 +26,7 @@ trait HasTraits
     private function renderTraits(): string
     {
         $traits = array_map(
-            fn (string $trait) => 'use ' . $trait . ';',
+            fn(string $trait) => 'use ' . $trait . ';',
             $this->traits
         );
 

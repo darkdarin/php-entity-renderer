@@ -3,6 +3,7 @@
 namespace DarkDarin\PhpEntityRenderer\Renderers;
 
 use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\EntityWithDescriptionInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Helpers\ClassNameHelper;
 use DarkDarin\PhpEntityRenderer\Helpers\HasAttributes;
@@ -10,7 +11,7 @@ use DarkDarin\PhpEntityRenderer\Helpers\HasDocBlock;
 use DarkDarin\PhpEntityRenderer\Helpers\HasNamespaces;
 use DarkDarin\PhpEntityRenderer\Helpers\IndentsHelper;
 
-abstract class AbstractEntityRenderer implements EntityRendererInterface
+abstract class AbstractEntityRenderer implements EntityRendererInterface, EntityWithDescriptionInterface
 {
     use HasAttributes;
     use HasDocBlock;

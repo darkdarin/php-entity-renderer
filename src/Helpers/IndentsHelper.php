@@ -18,6 +18,6 @@ class IndentsHelper
     {
         $lines = explode(PHP_EOL, $content);
 
-        return implode(PHP_EOL, array_map(fn (string $line) => $fill . $line, $lines));
+        return implode(PHP_EOL, array_map(fn(string $line) => $fill . $line, $lines));
     }
 }

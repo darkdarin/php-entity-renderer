@@ -25,7 +25,7 @@ readonly class IntersectTypeRenderer implements TypeRendererInterface
         return implode(
             '&',
             array_map(
-                fn (TypeRendererInterface $type) => $type instanceof UnionTypeRenderer ? '(' . $type->render($entityAliases) . ')' : $type->render($entityAliases),
+                fn(TypeRendererInterface $type) => $type instanceof UnionTypeRenderer ? '(' . $type->render($entityAliases) . ')' : $type->render($entityAliases),
                 $this->types
             )
         );

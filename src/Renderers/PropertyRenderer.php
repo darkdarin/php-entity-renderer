@@ -4,6 +4,7 @@ namespace DarkDarin\PhpEntityRenderer\Renderers;
 
 use DarkDarin\PhpEntityRenderer\Contracts\DocBlockRendererInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\EntityWithDescriptionInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\TypeRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Enums\VisibilityModifierEnum;
@@ -13,7 +14,7 @@ use DarkDarin\PhpEntityRenderer\Helpers\HasModifierReadonly;
 use DarkDarin\PhpEntityRenderer\Helpers\HasModifierVisibility;
 use DarkDarin\PhpEntityRenderer\Renderers\Types\ArrayTypeRenderer;
 
-class PropertyRenderer implements EntityRendererInterface, DocBlockRendererInterface
+class PropertyRenderer implements EntityRendererInterface, DocBlockRendererInterface, EntityWithDescriptionInterface
 {
     use HasAttributes;
     use HasDocBlock;
@@ -41,9 +42,11 @@ class PropertyRenderer implements EntityRendererInterface, DocBlockRendererInter
         return $this->type;
     }
 
-    public function setDescription(string $description): void
+    public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
     }
 
     public function getDescription(): ?string

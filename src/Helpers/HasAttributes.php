@@ -25,7 +25,7 @@ trait HasAttributes
     private function renderAttributes(EntityAliases $entityAliases, bool $inline = false): string
     {
         $attributes = array_map(
-            fn (AttributeRenderer $attribute) => $attribute->render($entityAliases),
+            fn(AttributeRenderer $attribute) => $attribute->render($entityAliases),
             $this->attributes
         );
 

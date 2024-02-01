@@ -9,8 +9,7 @@ class ValueRenderer implements EntityRendererInterface
 {
     public function __construct(
         private readonly mixed $value,
-    ) {
-    }
+    ) {}
 
     public function getValue(): mixed
     {
@@ -26,6 +25,10 @@ class ValueRenderer implements EntityRendererInterface
             "/^([ ]*)\)(,?)$/m" => '$1]$2',
             "/=>[ ]?\n[ ]+\[/" => '=> [',
             "/([ ]*)(\'[^\']+\') => ([\[\'])/" => '$1$2 => $3',
+            "/NULL/" => "null",
+            "/FALSE/" => "false",
+            "/TRUE/" => "true",
+            "/\[\n\]/" => "[]"
         ];
 
         return preg_replace(array_keys($patterns), array_values($patterns), $export);

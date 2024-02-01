@@ -25,7 +25,7 @@ trait HasMethods
     protected function renderMethods(EntityAliases $entityAliases, bool $withoutBody = false): string
     {
         $methods = array_map(
-            fn (MethodRenderer $method) => $method->render($entityAliases, $withoutBody),
+            fn(MethodRenderer $method) => $method->render($entityAliases, $withoutBody),
             $this->methods
         );
 

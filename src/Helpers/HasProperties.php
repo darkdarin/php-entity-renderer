@@ -40,7 +40,7 @@ trait HasProperties
     protected function renderProperties(EntityAliases $entityAliases): string
     {
         $properties = array_map(
-            fn (PropertyRenderer $property) => $property->render($entityAliases),
+            fn(PropertyRenderer $property) => $property->render($entityAliases),
             $this->properties
         );
 

@@ -2,12 +2,12 @@
 
 namespace DarkDarin\PhpEntityRenderer\Renderers;
 
-use DarkDarin\PhpEntityRenderer\Contracts\DocBlockRendererInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\EntityWithDescriptionInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Helpers\HasDocBlock;
 
-class EnumCaseRenderer implements EntityRendererInterface
+class EnumCaseRenderer implements EntityRendererInterface, EntityWithDescriptionInterface
 {
     use HasDocBlock;
 

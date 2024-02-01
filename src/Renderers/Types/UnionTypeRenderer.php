@@ -26,7 +26,7 @@ readonly class UnionTypeRenderer implements TypeRendererInterface
         return implode(
             '|',
             array_map(
-                fn (TypeRendererInterface $type) => $type instanceof IntersectTypeRenderer
+                fn(TypeRendererInterface $type) => $type instanceof IntersectTypeRenderer
                     ? '(' . $type->render($entityAliases) . ')'
                     : $type->render($entityAliases),
                 $this->types
@@ -84,7 +84,7 @@ readonly class UnionTypeRenderer implements TypeRendererInterface
     {
         return array_reduce(
             $types,
-            fn (bool $carry, TypeRendererInterface $item) => $carry || $item->isNullable(),
+            fn(bool $carry, TypeRendererInterface $item) => $carry || $item->isNullable(),
             false
         );
     }

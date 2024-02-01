@@ -4,13 +4,14 @@ namespace DarkDarin\PhpEntityRenderer\Renderers;
 
 use DarkDarin\PhpEntityRenderer\Contracts\DocBlockRendererInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\EntityWithDescriptionInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\TypeRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Helpers\HasAttributes;
 use DarkDarin\PhpEntityRenderer\Helpers\HasModifierReadonly;
 use DarkDarin\PhpEntityRenderer\Helpers\HasModifierVisibility;
 
-class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInterface
+class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInterface, EntityWithDescriptionInterface
 {
     use HasAttributes;
     use HasModifierReadonly;
@@ -22,8 +23,7 @@ class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInte
     public function __construct(
         private readonly string $name,
         private readonly TypeRendererInterface $type,
-    ) {
-    }
+    ) {}
 
     public function getName(): string
     {
@@ -35,9 +35,11 @@ class ParameterRenderer implements EntityRendererInterface, DocBlockRendererInte
         return $this->type;
     }
 
-    public function setDescription(string $description): void
+    public function setDescription(string $description): self
     {
         $this->description = $description;
+
+        return $this;
     }
 
     public function getDescription(): ?string

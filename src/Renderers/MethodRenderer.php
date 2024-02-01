@@ -3,6 +3,7 @@
 namespace DarkDarin\PhpEntityRenderer\Renderers;
 
 use DarkDarin\PhpEntityRenderer\Contracts\EntityRendererInterface;
+use DarkDarin\PhpEntityRenderer\Contracts\EntityWithDescriptionInterface;
 use DarkDarin\PhpEntityRenderer\Contracts\TypeRendererInterface;
 use DarkDarin\PhpEntityRenderer\EntityAliases;
 use DarkDarin\PhpEntityRenderer\Helpers\HasAttributes;
@@ -11,9 +12,8 @@ use DarkDarin\PhpEntityRenderer\Helpers\HasModifierInheritance;
 use DarkDarin\PhpEntityRenderer\Helpers\HasModifierStatic;
 use DarkDarin\PhpEntityRenderer\Helpers\HasModifierVisibility;
 use DarkDarin\PhpEntityRenderer\Helpers\IndentsHelper;
-use DarkDarin\PhpEntityRenderer\Renderers\Types\BuiltinTypeRenderer;
 
-class MethodRenderer implements EntityRendererInterface
+class MethodRenderer implements EntityRendererInterface, EntityWithDescriptionInterface
 {
     use HasAttributes;
     use HasDocBlock;
@@ -124,7 +124,7 @@ class MethodRenderer implements EntityRendererInterface
         return implode(' ', $result) . $signature . $method;
     }
 
-    protected function renderSignatureInline(EntityAliases $entityAliases,): string
+    protected function renderSignatureInline(EntityAliases $entityAliases): string
     {
         $parameters = [];
         foreach ($this->parameters as $parameter) {

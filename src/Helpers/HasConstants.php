@@ -25,7 +25,7 @@ trait HasConstants
     private function renderConstants(EntityAliases $entityAliases): string
     {
         $constants = array_map(
-            fn (ConstantRenderer $constant) => $constant->render($entityAliases),
+            fn(ConstantRenderer $constant) => $constant->render($entityAliases),
             $this->constants
         );
 

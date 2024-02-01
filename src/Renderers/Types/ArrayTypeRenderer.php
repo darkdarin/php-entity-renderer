@@ -10,8 +10,7 @@ readonly class ArrayTypeRenderer implements TypeRendererInterface
     public function __construct(
         public TypeRendererInterface $valueType = BuiltinTypeRenderer::Mixed,
         public ?BuiltinTypeRenderer $keyType = null,
-    ) {
-    }
+    ) {}
 
     public function renderDocBlock(EntityAliases $entityAliases): string
     {

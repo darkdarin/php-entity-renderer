@@ -77,7 +77,7 @@ class EnumRenderer extends AbstractEntityRenderer
     protected function renderCases(EntityAliases $entityAliases): string
     {
         $cases = array_map(
-            fn (EnumCaseRenderer $case) => $case->render($entityAliases),
+            fn(EnumCaseRenderer $case) => $case->render($entityAliases),
             $this->cases
         );
 

@@ -3,7 +3,6 @@
 namespace DarkDarin\PhpEntityRenderer\Renderers;
 
 use DarkDarin\PhpEntityRenderer\EntityAliases;
-use DarkDarin\PhpEntityRenderer\Helpers\ClassNameHelper;
 use DarkDarin\PhpEntityRenderer\Helpers\HasConstants;
 use DarkDarin\PhpEntityRenderer\Helpers\HasExtends;
 use DarkDarin\PhpEntityRenderer\Helpers\HasImplements;
