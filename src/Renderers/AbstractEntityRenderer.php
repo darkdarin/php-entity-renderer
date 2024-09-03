@@ -75,6 +75,7 @@ $namespace$uses$docBlock$attributes$header
 {
 $body
 }
+
 PHP;
     }
 
